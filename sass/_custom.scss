@@ -1,0 +1,11 @@
+// VARIABLES
+$main-color: hsl(180, 76%, 41%);
+$medium-screen: 991px;
+
+
+
+// BOOTSTRAP VARIABLE
+$primary: $main-color;
+
+// IMPORT BOOTSTRAP
+@import '../node_modules/bootstrap/scss/bootstrap.scss'

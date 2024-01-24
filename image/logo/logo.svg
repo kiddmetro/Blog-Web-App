@@ -1,0 +1,20 @@
+<svg width="4" height="4" viewBox="0 0 4 4" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Group 3381">
+<g id="Mask Group">
+<mask id="mask0_131_7849" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="4" height="4">
+<circle id="Ellipse 323" cx="2" cy="2" r="2" fill="white"/>
+</mask>
+<g mask="url(#mask0_131_7849)">
+<rect id="Rectangle 2976" width="2" height="4" fill="#00AAA1"/>
+</g>
+</g>
+<g id="Mask Group_2">
+<mask id="mask1_131_7849" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="4" height="4">
+<circle id="Ellipse 323_2" cx="2" cy="2" r="2" transform="rotate(-180 2 2)" fill="#222222"/>
+</mask>
+<g mask="url(#mask1_131_7849)">
+<rect id="Rectangle 2976_2" x="4" y="4" width="2" height="4" transform="rotate(-180 4 4)" fill="#00AAA1"/>
+</g>
+</g>
+</g>
+</svg>

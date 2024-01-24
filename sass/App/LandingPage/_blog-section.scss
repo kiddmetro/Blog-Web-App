@@ -1,0 +1,141 @@
+@use '../../custom' as *;
+@use '../../Components/mixins' as *;
+
+
+
+.blog-section{
+    margin-top: 4rem;
+
+    &__title{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+
+    .first-text{
+        @include brand-text-one;
+    }
+    
+    .second-text{
+        @include brand-text-two;
+    }
+
+     // Style for card grid
+     .blog-post {
+            display: flex;
+            flex-flow: row wrap;
+            gap: 2rem;
+            
+                // Media query for smaller screens (adjust the breakpoint as needed)
+                @media (max-width: 660px) {
+                    width: 100%; // Set to full width on smaller screens
+                    gap:30px;
+                }
+           
+     }
+
+    .blog-card{
+        width: 260px;
+        height: auto;
+        border-radius: 12px;
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 2px, rgba(0, 0, 0, 0.32) 0px 1px 4px 1px;
+        box-sizing: border-box;
+        transition: transform 0.3s ease; // Smooth transition over 0.3 seconds
+
+        // Media query for smaller screens (adjust the breakpoint as needed)
+        @media (max-width: 660px) {
+        width: 100%; // Set to full width on smaller screens
+        }
+
+        &__link{
+            text-decoration: none;
+        }
+
+
+        &:hover{
+            cursor: pointer;
+            transform: translateY(-10px); // Move the card 10 pixels upward on hover
+            box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 2px, rgba(0, 0, 0, 0.6) 0px 1px 4px 1px;
+
+        }
+       
+
+        .blog-img{
+            width: 260px; 
+            height: 180px; 
+            overflow: hidden;
+            border-top-left-radius: 12px;
+            border-top-right-radius: 12px;
+
+            @media (max-width: 660px) {
+                width: 100%; // Set to full width on smaller screens
+                }
+
+            img {
+                object-fit: cover; 
+                object-position: center center;
+                width: 100%;
+                height: 100%;
+            }
+        }
+
+        .blog-category{
+            @include category-design;
+            margin-left: 5px;
+        }
+
+        .blog-title{
+            width: 250px;
+            margin-left: 5px;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+                // Media query for smaller screens (adjust the breakpoint as needed)
+                @media (max-width: 570px) {
+                    width: 450px; // Set to full width on smaller screens
+                }
+        }
+
+        .blog-info{
+            
+            width: 250px;
+            margin-left: 5px;
+
+            // .view-info .blog-pic img share the same styling with blog-single.scss using mixins
+            
+
+             // Media query for smaller screens (adjust the breakpoint as needed)
+             @media (max-width: 570px) {
+                width: 60%; // Set to full width on smaller screens
+            }
+        
+        }
+
+        .blog-sample{
+            width: 250px ;
+            margin-left: 5px;
+            
+             // Media query for smaller screens (adjust the breakpoint as needed)
+             @media (max-width: 570px) {
+                width: 500px; // Set to full width on smaller screens
+            }
+
+
+            p{
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                overflow-x: hidden;
+            }
+        }
+       
+    }
+
+    .blog-move-buttons{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+}
+

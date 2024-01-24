@@ -1,0 +1,83 @@
+@use '../custom' as *;
+
+
+//TYPOGRAPHY FOR BLOG SECTION AND SINGLE BLOG PAGE
+.blog-title{
+    color: #222;
+    font-family: Noto Sans;
+    font-size: 25px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 140%; /* 37.8px */
+    text-transform: capitalize;
+}
+
+.blog-person{
+    color: #777;
+    font-family: Noto Sans;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 100%; /* 12px */
+    text-transform: capitalize;
+    margin: 10px 10px 0 3px;
+}
+
+.blog-info{
+  
+    
+    &__icon{
+        display: flex;
+        color: #555555;
+        margin: 10px 10px 0 0;
+       
+
+        &__text{
+            color: #777;
+            font-family: Noto Sans;
+            font-size: 12px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 100%; /* 12px */
+            text-transform: capitalize;
+        }
+    }
+   
+}
+
+.blog-sample{
+    color: #555;
+    font-family: Noto Sans;
+    font-size:15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%; /* 22.5px */
+}
+
+
+// TYPOPRAPHY FOR SIGNUP AND LOGIN STYLING
+.form-name{
+    color: #000;
+    font-family: Poppins;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 35px; /* 145.833% */
+    letter-spacing: 1.92px;
+}
+
+.acc-text{
+    color: #BEBCBC;
+    font-family: Poppins;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 35px; /* 218.75% */
+    letter-spacing: 1.28px;
+}
+
+.choice-text{
+    text-decoration: none;
+    font-weight: 800;
+
+}

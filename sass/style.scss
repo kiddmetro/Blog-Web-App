@@ -1,0 +1,24 @@
+@use 'custom';
+
+
+//IMPORT COMPONENT
+@use './components/mixins';
+@use './components/logo';
+@use './components/typography';
+@use './components/table';
+
+// IMPORT LANDING PAGE SECTION STYLES
+@use './App/LandingPage/nav-bar';
+@use './App/LandingPage/intro-section';
+@use './App/LandingPage/blog-section';
+@use './App/LandingPage/footer';
+
+
+//IMPORT STYLE FOR SINGLE BLOG PAGE
+@use './App/blogSingle/blog-single.scss';
+
+// IMPORT SIGNUP AND LOGIN STYLE 
+@use './App/mixStyle/mix-style.scss';
+
+//IMPORT ADMIN STYLING
+@use './App/Admin/admin-style';

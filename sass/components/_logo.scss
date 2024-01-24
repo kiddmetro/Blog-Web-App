@@ -1,0 +1,22 @@
+@use '../custom' as *;
+@use '../components/mixins' as *;
+
+
+.blog-logo{
+    @include brand-text-one;
+    font-size: 27px;
+    line-height: 100%; /* 27px */
+    letter-spacing: 0.54px;
+   
+}
+
+.blog-logo2{
+    @include brand-text-two; 
+    font-size: 17px;
+    margin-top: 10px;
+    // line-height: 100%;
+}
+
+.logo-image{
+    margin-left: 2px;
+}

@@ -1,0 +1,22 @@
+{
+  "name": "blog-site",
+  "version": "1.0.0",
+  "description": "This is a blog site that displays blogs on so many things",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "compile:sass": "sass --watch sass:assets/css"
+  },
+  "keywords": [
+    "Blog"
+  ],
+  "author": "Igwe Clinton",
+  "license": "MIT",
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^6.5.1",
+    "bootstrap": "^5.3.2"
+  },
+  "devDependencies": {
+    "sass": "^1.69.5"
+  }
+}

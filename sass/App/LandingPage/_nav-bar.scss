@@ -1,0 +1,167 @@
+@use '../../custom' as *;
+
+@use '../../Components/mixins' as *;
+
+
+body{
+    @media (max-width: 530px) {
+        width: 450px;
+        margin: 0;
+
+    }
+}
+
+.logo-image{
+    margin: 5px 0 0 2px;
+}
+
+
+.nav-background{
+    background:#E8F3F3;
+    
+    // .nav-items{
+    //     @media (max-width: 1140px){
+    //         position: fixed;
+    //         z-index: 99;
+    //         top: 70px;
+    //         width: 100%;
+    //         left: -100%;
+    //         height: 100%;
+    //         padding: 10px 50px 0 50px;
+    //         text-align: center;
+    //         background: #14181f;
+    //         display: inline-block;
+    //         transition: left 0.3s ease;
+    //     }
+
+    //     .active{
+    //          @media (max-width: 1140px){
+    //             left: 0px;
+    //          }
+    //     }
+
+    //     li{
+    //         @media (max-width: 1140px){
+    //             line-height: 40px;
+    //             margin: 30px 0;
+    //          }
+    //     }
+
+
+    // }
+   
+
+    .nav-menu{
+        text-decoration: none;
+        margin-right: 20px;
+        color: #222;
+        transition: 0.5s;
+
+        &:hover{
+            color: $main-color;
+        }
+    }
+
+    // form{
+    //     @media (max-width: 1140px){
+    //         position: absolute;
+    //         top: 80px;
+    //         right: 50px;
+    //         opacity: 0;
+    //         pointer-events: none;
+    //         transition: top 0.3s ease, opacity 0.1s ease;
+    //     }
+
+    //     &.active {
+    //         @media (max-width: 1140px){
+    //             top: 95px;
+    //             opacity: 1;
+    //             pointer-events: auto;
+    //         }   
+    //     }
+
+    //     &::before{
+    //         @media (max-width: 1140px){
+    //             position: absolute;
+    //             content: "";
+    //             top: -13px;
+    //             right: 0px;
+    //             width: 0;
+    //             height: 0;
+    //             z-index: -1;
+    //             border: 10px solid transparent;
+    //             border-bottom-color: #1e232b;
+    //             margin: -20px 0 0;
+    //          }
+    //     }
+
+    //     &::after{
+    //         @media (max-width: 1140px){
+    //             position: absolute;
+    //             content: '';
+    //             height: 60px;
+    //             padding: 2px;
+    //             background: #1e232b;
+    //             border-radius: 2px;
+    //             min-width: calc(100% + 20px);
+    //             z-index: -2;
+    //             left: 50%;
+    //             top: 50%;
+    //             transform: translate(-50%, -50%);
+    //          }
+    //     }
+    // }
+
+   
+
+    .search-form{
+        display: flex;
+
+        @media (max-width: $medium-screen) {
+            display: none; // Hide on medium screens
+        }
+
+
+        input[type="search"] {
+            display: flex;
+            width: 166px;
+            align-items: center;
+            gap: 12px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            background: #F4F4F5;
+            outline: none;
+
+            &:focus {
+              border-color: $main-color;
+              box-shadow: 0 0 5px $main-color;
+            }
+          
+        }
+    
+    }
+
+
+    // @media (max-width: 1245px) {
+    //       padding: 0 50px;
+    //     }
+
+    // @media (max-width: 1140px){
+    //           padding: 0px;
+    //      }
+
+    
+    .stat-container{
+        width: 400px;
+
+        .user-stat{
+        margin-left: 15px;
+            @media (max-width: $medium-screen) {
+                display: none; 
+    
+            }
+        }
+    }
+
+}
+

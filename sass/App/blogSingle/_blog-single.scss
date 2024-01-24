@@ -1,0 +1,248 @@
+@use '../../custom' as *;
+@use '../../components/mixins' as *;
+
+
+
+.blog-card{
+    width: 100%;
+    height: auto;
+    box-sizing: border-box;
+
+    // Media query for smaller screens (adjust the breakpoint as needed)
+    @media (max-width: 660px) {
+    width: 100%; // Set to full width on smaller screens
+    }
+
+    .blog-category{
+        @include category-design;
+    }
+
+    .blog-title{
+        width: 100%;
+            // Media query for smaller screens (adjust the breakpoint as needed)
+            @media (max-width: 570px) {
+                width: 450px; // Set to full width on smaller screens
+            }
+    }
+      
+    .blog-info{
+        width: 300px;
+        @include blog-info-style;
+
+         .view-info{
+            display: flex;
+            .blog-pic{
+               @include profile-pic-style;
+    
+                img{
+                    @include profile-img-style;
+                    border-radius: 18px;
+    
+                }
+            }
+
+         }
+         // Media query for smaller screens (adjust the breakpoint as needed)
+         @media (max-width: 570px) {
+            width: 60%; // Set to full width on smaller screens
+        }
+       
+    }
+
+    .blog-img{
+        width: 100%; 
+        height: 400px; 
+        overflow: hidden;
+
+        @media (max-width: 660px) {
+            width: 100%; // Set to full width on smaller screens
+            }
+            
+
+        img {
+            object-fit: cover; 
+            object-position: center center;
+            width: 100%;
+            height: 100%;
+
+            @media (max-width: 660px) {
+                object-fit: cover; 
+                object-position: center center;
+                width: 100%;
+                height: 100%;
+                }
+        }
+    }
+
+
+    .blog-sample{
+        width: 100% ;
+
+
+         // Media query for smaller screens (adjust the breakpoint as needed)
+         @media (max-width: 570px) {
+            width: 400px; // Set to full width on smaller screens
+        }
+
+        .blog-single{
+        font-size: 20px;
+        color: #555;
+        font-family: Noto Sans;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 150%; /* 22.5px */
+
+        }
+    }
+
+    
+}
+
+
+
+// COMMENT SECTION HEADER
+.first-text{
+    @include brand-text-one;
+}
+
+.second-text{
+    @include brand-text-two;
+}
+
+// STYLING OF THE COMMENT SECTION
+.individual-comment-section{
+    width: 1200px;
+    margin-top: 40px;
+
+    
+
+}
+
+.individual-comment{
+    display: flex;
+    margin-bottom: 30px;
+}
+
+
+.individual-profile{
+    width: 30px;
+    height: 30px;
+    margin: 5px 10px 0 0;
+    
+
+    img{
+        @include profile-img-style;
+    }
+}
+
+.comment-info-section{
+
+    @media (max-width: 1250px){
+        width: 1000px;
+    }
+
+    @media (max-width: 1200px){
+        width: 800px;
+    }
+    @media (max-width: 940px){
+        width: 770px;
+    }
+
+    @media (max-width: 900px){
+        width: 670px;
+    }
+    @media (max-width: 810px){
+        width: 600px;
+    }
+    @media (max-width: 740px){
+        width: 550px;
+    }
+    @media (max-width: 685px){
+        width: 500px;
+    }
+    @media (max-width: 640px){
+        width: 400px;
+    }
+    @media (max-width: 540px){
+        width: 340px;
+    }
+
+    .comment-info{
+        display: flex;
+
+        .comment-username{
+            color: #3b3939;
+            font-family: Noto Sans;
+            font-size: 18px;
+            font-style: normal;
+            font-weight: 700;
+        }
+
+        .comment-text{
+            margin: 4px 0 0 10px;
+            width: 950px;
+            color: #000;
+            font-family: Poppins;
+            font-size: 15px;
+            font-style: normal;
+            line-height: 20px; 
+            letter-spacing: 1.92px;
+
+        }
+    }
+
+    .comment-info-stat{
+        display: flex;
+        justify-content: space-between;
+        width: 250px;
+        margin: 15px 0 0 0;
+        color: #979797;
+        font-weight: 500;
+        font-family: Poppins;
+        font-size: 13px;
+        font-style: normal;
+
+        .comment-likes{
+            display: flex;
+            justify-content: space-between;
+            width: 37px;
+        }
+    }
+
+    .comment-info-view{
+        display: flex;
+
+        .view-line{
+            width: 30px;
+        }
+        .view-reply{
+            margin: 10px 0 0 13px;
+            display: flex;
+            color: #4a4949;
+            font-weight: 700;
+            font-family: Poppins;
+            font-size: 15px;
+            font-style: normal;
+        }
+    }
+
+
+}
+
+
+.comment-like-button{
+    margin: 15px 0 0 0;
+}
+
+
+// reply and cancel button styling
+.no-btn{
+    border: none;
+    background: none;
+    color: #979797;
+
+}
+
+.reply-area{
+    width: 1100px;
+}

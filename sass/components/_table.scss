@@ -1,0 +1,44 @@
+@use '../custom' as *;
+
+
+
+.table-wrapper{
+    width: 1000px;
+    margin: 20px;
+
+}
+
+
+table{
+    margin: 40px;
+    width: 900px;
+    border: 1px solid #202022;
+  }
+
+table, thead, tbody,th, td{
+    padding: 10px;
+
+}
+
+th{
+    background-color: $primary;
+}
+
+ th, td{
+    border-collapse: collapse;
+
+}
+
+td, th{
+    border-bottom: 1px solid #202022;
+}
+
+tr:nth-child(even){
+    background-color: #ddd;
+}
+
+
+
+.user-row-name{
+    text-transform: capitalize;
+}

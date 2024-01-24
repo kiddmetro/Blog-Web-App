@@ -1,0 +1,66 @@
+@use '../custom' as *;
+
+
+// STYLING OF LOGO AND OTHER SUB SECTIONS
+@mixin brand-text-one{
+    color: #FFF;
+    font-style: normal;
+    font-weight: 600;
+    text-transform: capitalize;
+    background: $main-color;
+    padding: 0 2px 0 2px;
+    font-size: 21px;
+    line-height: 140%; /* 29.4px */
+
+}
+
+@mixin brand-text-two{
+    color: #222;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 21px;
+    text-transform: capitalize;
+
+}
+
+
+// STYLING OF CATEGORY TAG
+@mixin category-design{
+    display: inline-flex;
+    padding: 4px 8px;
+    border-radius: 3px;
+    background: #DFF1F0;
+    color: #666;
+    font-family: Noto Sans;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 100%; /* 12px */
+    text-transform: capitalize;
+}
+
+// BLOG SECTION AND SINGLE BLOG STYLING
+
+@mixin blog-info-style{
+    display: flex;
+    justify-content: space-between;
+}
+
+
+
+
+
+//GENERAL STYLING FOR PROFILE IMAGE
+@mixin profile-pic-style{
+    width: 18px;
+    height: 18px;
+}
+
+@mixin profile-img-style{
+    object-fit: cover;
+    object-position: center center;
+    width: 100%;
+    height: 100%;
+    border-radius: 18px;
+    
+}
