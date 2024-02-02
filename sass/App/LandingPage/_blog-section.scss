@@ -24,11 +24,12 @@
      // Style for card grid
      .blog-post {
             display: flex;
+           justify-content: center;
             flex-flow: row wrap;
             gap: 2rem;
             
                 // Media query for smaller screens (adjust the breakpoint as needed)
-                @media (max-width: 660px) {
+                @media (max-width: 570px) {
                     width: 100%; // Set to full width on smaller screens
                     gap:30px;
                 }
@@ -44,7 +45,7 @@
         transition: transform 0.3s ease; // Smooth transition over 0.3 seconds
 
         // Media query for smaller screens (adjust the breakpoint as needed)
-        @media (max-width: 660px) {
+        @media (max-width: 570px) {
         width: 100%; // Set to full width on smaller screens
         }
 
@@ -118,7 +119,7 @@
             
              // Media query for smaller screens (adjust the breakpoint as needed)
              @media (max-width: 570px) {
-                width: 500px; // Set to full width on smaller screens
+                width: 470px; // Set to full width on smaller screens
             }
 
 

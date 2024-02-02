@@ -157,107 +157,149 @@ function getTimeDifference($timestamp) {
             </form>
 
 
-
+            <!-- COMMENT SECTION -->
             <div class="comment-section" >
-                <div class="individual-comment-section" >
-                    <?php
-                        // Fetch comment data from the "comments" table in the database
-                        $query = "SELECT * FROM comments WHERE blog_id = $blogId";
-                        $result = mysqli_query($db, $query);    
+            <div class="individual-comment-section">
+            <?php
+            $query = "SELECT * FROM comments WHERE blog_id = $blogId";
+            $result = mysqli_query($db, $query);
 
-                        // Check if any dishes are found
-                        if (mysqli_num_rows($result) > 0)  {
-                        // Loop through the fetched results and generate HTML code for each comment
-                        while ($comment = mysqli_fetch_assoc($result)) {
-                            $blogId = $comment['blog_id'];
-                            $userImage = $comment['user_image'];
-                            $userName = $comment['username'];
-                            $commentText = $comment['comment_text'];
-                            $commentDate = $comment['comment_date'];
-                            $commentId = $comment['comment_id'];
+            if (mysqli_num_rows($result) > 0) {
+                while ($comment = mysqli_fetch_assoc($result)) {
+                    $commentId = $comment['comment_id'];
+                    $userName = $comment['username'];
+                    $commentText = $comment['comment_text'];
+                    $commentDate = $comment['comment_date'];
 
-                            $replyQuery = "SELECT * FROM replies WHERE comment_id = $commentId";
-                            $replyResult = mysqli_query($db, $replyQuery);
-                            $hasReplies = mysqli_num_rows($replyResult) > 0;
-                    ?>
-                    <div class="individual-comment">
-                     
-                            <div class="individual-profile">
-                                <?php
-                                 // Fetch user image using a separate query
-                                    $getUserImageQuery = "SELECT user_image FROM users WHERE user_id = ?";
-                                    $getUserImageStmt = $pdo->prepare($getUserImageQuery);
-                                    $getUserImageStmt->execute([$userId]);
-                                    $userImage = $getUserImageStmt->fetchColumn();
-                                    // Ensure $userImage is not null or empty before echoing the image tag
-                                    if (!empty($userImage)) {
-                                        echo '<img src="' . $userImage . '" alt="">';
-                                    } else {
-                                        // Provide a default image if $userImage is null or empty
-                                        echo '<img src="image/default-image/userimage.jpg" alt="">';
-                                    }
-                                ?>
-                            </div>
-                            <div class="comment-info-section">
-                                <div class="comment-info">
-                                    <p class="comment-username" id="commentUsername_<?php echo $commentId; ?>"><?php echo $userName ?></p>
-                                    <p class="comment-text"><?php echo $commentText ?></p>
-                                </div>
-                                <div class="comment-info-stat">
-                                <?php
-                                    $commentDateAgo = getTimeDifference($commentDate);
-                                ?>
-                                    <p style="margin-top: 15px;"><?php echo $commentDateAgo ?></p>
-                                    <div class="comment-likes" style="margin-top: 15px;">
-                                        <p>2</p>
-                                        <p>likes</p>
-                                    </div>
-                                    <button class="reply-btn no-btn" onclick="showReplyForm('<?php echo $commentId; ?>')">Reply</button>
-                                    <div class="comment-like-button">
-                                        <i class="fa-solid fa-heart"></i>
-                                    </div>
-                                </div>
-                                <div class="comment-info-view" style="<?php echo $hasReplies ? 'display: block;' : 'display: none;'; ?>">
-                                    <div class="view-line">
-                                        <hr>
-                                    </div>
-                                    <div class="view-reply">
-                                        <button type="button" class="no-btn">
-                                            <?php
-                                            echo $hasReplies ? (mysqli_num_rows($replyResult) > 1 ? 'View replies' : 'View reply') : '';
-                                            ?>
-                                        </button>
-                                        <div>
-                                            (<?php echo $hasReplies ? mysqli_num_rows($replyResult) : '0'; ?>)
-                                        </div>
-                                    </div>
-                                </div>
+                    // Fetch user image using a separate query
+                    $getUserImageQuery = "SELECT user_image FROM users WHERE username = ?";
+                    $getUserImageStmt = $pdo->prepare($getUserImageQuery);
+                    $getUserImageStmt->execute([$userName]);
+                    $userImage = $getUserImageStmt->fetchColumn();
 
-                            </div>
-                    </div>
-                            <div class="comment-reply-form my-4 " id="replyForm_<?php echo $commentId; ?>" style="display: none; "  >
-                                <form class="row g-3 " action="./controller/reply-ctrl.php" method="POST" >
-                                    <input type="hidden" name="comment_id" value="<?php echo $comment['comment_id']; ?>">
-                                    <input type="hidden" name="blog_id" value="<?php echo $comment['blog_id']; ?>">
-                                    <div class="col-12 reply-area">
-                                        <textarea id="replyTextarea_<?php echo $commentId; ?>" placeholder="Reply to @<?php echo $userName; ?>" name="replycomment"></textarea>
-                                    </div>
-                                    <div class="col-12 justify-content-center align-items-center ms-5">
-                                        <button type="submit" class="btn btn-sm text-light btn-primary" name="reply-submit" >Reply</button>
-                                        <button type="button" class="cancel-btn no-btn ms-2" onclick="cancelReply('<?php echo $commentId; ?>')">Cancel</button>
+                    echo '<div class="individual-comment">';
+                    echo '<div class="individual-profile">';
+                    
+                    // Display user image
+                    if (!empty($userImage)) {
+                        echo '<img src="' . $userImage . '" alt="">';
+                    } else {
+                        echo '<img src="image/default-image/userimage.jpg" alt="">';
+                    }
+                    echo '</div>';
+                    echo '<div class="comment-info-section">';
+                    echo '<div class="comment-info">';
+                    
+                    // Display comment details
+                    echo '<p class="comment-username" id="commentUsername_' . $commentId . '">' . $userName . '</p>';
+                    echo '<p class="comment-text">' . $commentText . '</p>';
+                    echo '</div>';
+                    echo '<div class="comment-info-stat">';
+                    
+                    // Display comment date
+                    $commentDateAgo = getTimeDifference($commentDate);
+                    echo '<p style="margin-top: 15px;">' . $commentDateAgo . '</p>';
+                    
+                    // Display reply button
+                    echo '<button class="reply-btn no-btn" onclick="showReplyForm(\'' . $commentId . '\')">Reply</button>';
+                    
+                    // Display comment likes and like button
+                    echo '<div class="comment-likes" style="margin-top: 15px;">';
+                    echo '<p>2</p>';
+                    echo '<p>likes</p>';
+                    echo '</div>';
+                    echo '<div class="comment-like-button">';
+                    echo '<i class="fa-solid fa-heart"></i>';
+                    echo '</div>';
+                    echo '</div>';
 
-                                    </div>
-                                </form>
-                            </div>
-                
+                    // Fetch and display replies for the current comment
+                    $replyQuery = "SELECT * FROM replies WHERE comment_id = $commentId";
+                    $replyResult = mysqli_query($db, $replyQuery);
+                    
+                    echo '<div  class="comment-info-view" onclick="toggleReplies(\'' . $commentId . '\')" style="' . (mysqli_num_rows($replyResult) > 0 ? 'display: block;' : 'display: none;') . '">';
+                    echo '<div class="view-line"><hr></div>';
+                    echo '<div  class="view-reply">';
+                    
+                    // Display view replies button
+                    echo '<button type="button" id="view-reply-btn_' . $commentId . '" class="no-btn">';
+                    echo mysqli_num_rows($replyResult) > 1 ? 'View replies' : 'View reply';
+                    echo '</button>';
+                    
+                    // Display number of replies
+                    echo '<div>(' . mysqli_num_rows($replyResult) . ')</div>';
+                    echo '</div>';
+                    echo '</div>';
 
-                    <?php } ?>
-                    <?php } else {
-                        // No blogs found
-                        echo "Be The First to Comment.";
-                    } ?>
+                    echo '</div>';
+                    echo '</div>';
+                    
+                    // Display reply form
+                    echo '<div class="comment-reply-form my-4" id="replyForm_' . $commentId . '" style="display: none;">';
+                    echo '<form class="row g-3" action="./controller/reply-ctrl.php" method="POST">';
+                    echo '<input type="hidden" name="comment_id" value="' . $commentId . '">';
+                    echo '<input type="hidden" name="blog_id" value="' . $comment['blog_id'] . '">';
+                    echo '<div class="col-12 reply-area">';
+                    echo '<textarea id="replyTextarea_' . $commentId . '" placeholder="Reply to @' . $userName . '" name="replycomment"></textarea>';
+                    echo '</div>';
+                    echo '<div class="col-12 justify-content-center align-items-center ms-5">';
+                    echo '<button type="submit" class="btn btn-sm text-light btn-primary" name="reply-submit">Reply</button>';
+                    echo '<button type="button" class="cancel-btn no-btn ms-2" onclick="cancelReply(\'' . $commentId . '\')">Cancel</button>';
+                    echo '</div>';
+                    echo '</form>';
+                    echo '</div>';
 
-                </div> 
+                    // Display replies if available
+                    while ($reply = mysqli_fetch_assoc($replyResult)) {
+                        // Fetch user image for the reply
+                        $getReplyUserImageQuery = "SELECT user_image FROM users WHERE username = ?";
+                        $getReplyUserImageStmt = $pdo->prepare($getReplyUserImageQuery);
+                        $getReplyUserImageStmt->execute([$reply['username']]);
+                        $replyUserImage = $getReplyUserImageStmt->fetchColumn();
+
+                        echo '<div id="repliesContainer_' . $commentId . '" class="individual-comment" onclick="toggleReplies(\'' . $commentId . '\')" style="display: none;">';
+                        echo '<div class="individual-profile">';
+                        
+                        // Display reply user image
+                        if (!empty($replyUserImage)) {
+                            echo '<img src="' . $replyUserImage . '" alt="">';
+                        } else {
+                            echo '<img src="image/default-image/userimage.jpg" alt="">';
+                        }
+                        echo '</div>';
+                        echo '<div  class="comment-info-section">';
+                        echo '<div class="comment-info">';
+                        
+                        // Display reply details
+                        echo '<p class="comment-username" id="commentUsername_' . $reply['reply_id'] . '">' . $reply['username'] . '</p>';
+                        echo '<p class="comment-text">' . $reply['reply_text'] . '</p>';
+                        echo '</div>';
+                        echo '<div class="comment-info-stat">';
+                        
+                        // Display reply date
+                        $replyDateAgo = getTimeDifference($reply['reply_date']);
+                        echo '<p style="margin-top: 15px;">' . $replyDateAgo . '</p>';
+                        
+                        // Display reply likes and like button
+                        echo '<div class="comment-likes" style="margin-top: 15px;">';
+                        echo '<p>2</p>';
+                        echo '<p>likes</p>';
+                        echo '</div>';
+                        // echo '<button class="reply-btn no-btn" onclick="showReplyForm(\'' . $replyId . '\')">Reply</button>';
+                        echo '<div class="comment-like-button">';
+                        echo '<i class="fa-solid fa-heart"></i>';
+                        echo '</div>';
+                        echo '</div>';
+                        echo '</div>';
+                        echo '</div>';
+                    }
+                }
+            } else {
+                echo "Be The First to Comment.";
+            }
+            ?>
+        </div>
+
             </div>
             
         </div>
@@ -385,6 +427,25 @@ function getTimeDifference($timestamp) {
         });
     }
     </script>
+
+    <!-- Biew replies button -->
+    <script>
+        function toggleReplies(commentId) {
+            var repliesContainer = document.getElementById('repliesContainer_' + commentId);
+            var viewRepliesBtn = document.getElementById('view-reply-btn_' + commentId);
+
+            if (repliesContainer.style.display === 'none') {
+            repliesContainer.style.display = 'block';
+            viewRepliesBtn.innerText = 'Hide replies';
+            } else {
+            repliesContainer.style.display = 'none';
+            viewRepliesBtn.innerText = 'View replies';
+            }
+        }
+    </script>
+
+
+
 
 
 
